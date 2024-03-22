@@ -22,7 +22,11 @@
   aria-label={theme}
   aria-live="polite"
 >
-  🌞
+  {#if theme === 'light'}
+    🌞
+  {:else}
+    🌛
+  {/if}
 </button>
 
 <style>
