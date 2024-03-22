@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "What kind of life do you want to live?",
+  "description": "What kind of life do you want to live?",
+  "version": "1.0",
+  "chrome_url_overrides" : {
+    "newtab": "index.html"
+  },
+  "permissions": ["storage"]
+}
