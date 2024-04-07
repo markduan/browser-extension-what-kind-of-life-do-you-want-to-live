@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "zip -r release.zip index.html manifest.json dist"
+    "release": "zip -r release.zip index.html index.css manifest.json dist"
   },
   "author": "",
   "license": "MIT",
