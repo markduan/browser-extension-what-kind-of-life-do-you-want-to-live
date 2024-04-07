@@ -22,3 +22,14 @@
     <Timer {age} updateAt={parseInt(localStorage.getItem('updatedAt')) || Date.now()} />
   {/if}
 </main>
+
+<style>
+  main {
+    margin-top: 20vh;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+</style>

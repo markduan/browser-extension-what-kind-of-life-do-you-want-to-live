@@ -35,4 +35,10 @@
     border: none;
     background: none;
   }
+
+  .style-toggle {
+    position: absolute;
+    right: 8px;
+    top: 8px;
+  }
 </style>
