@@ -2,6 +2,7 @@
   const storageKey = 'theme-preference';
   const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
   const userTheme = localStorage.getItem(storageKey);
+
   let theme = userTheme || systemTheme;
   if (theme === 'dark') {
     document.body.classList.add(theme);
@@ -17,7 +18,6 @@
 <button
   on:click={toggleTheme}
   class="theme-toggle style-toggle"
-  id="theme-toggle"
   title="Toggles light & dark"
   aria-label={theme}
   aria-live="polite"
