@@ -11,12 +11,13 @@
   "license": "MIT",
   "devDependencies": {
     "chrome-types": "^0.1.273",
-    "esbuild": "^0.20.2",
+    "esbuild": "^0.23.1",
     "esbuild-svelte": "^0.8.0",
-    "prettier": "^3.2.5",
-    "prettier-plugin-svelte": "^3.2.2"
+    "prettier": "^3.3.3",
+    "prettier-plugin-svelte": "^3.2.6"
   },
   "dependencies": {
-    "svelte": "^4.2.12"
-  }
+    "svelte": "^5.0.0-next.245"
+  },
+  "packageManager": "yarn@4.4.1"
 }
