@@ -8,4 +8,4 @@ This extension inspired by [Death Focus](https://chrome.google.com/webstore/deta
 
 Life is short, you should cherish every minute and every second. Go out and have fun, take a walk, learn something new, cook a delicious meal, and work hard to create a better life for your family. Don't waste your time on meaningless things.
 
-Ask yourself: what kind of life do you want to live?
+Ask yourself: What kind of life do you want to live? 
