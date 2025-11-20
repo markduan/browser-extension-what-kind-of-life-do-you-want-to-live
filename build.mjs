@@ -19,6 +19,7 @@ const configs = {
   entryPoints: [path.join(__dirname, 'src/index.ts')],
   mainFields: ['svelte', 'browser', 'module', 'main'],
   conditions: ['svelte', 'browser'],
+  resolveExtensions: ['.svelte', '.ts', '.js'],
   bundle: true,
   minify: isProduction,
   plugins: [
