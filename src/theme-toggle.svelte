@@ -2,8 +2,12 @@
   type Theme = 'light' | 'dark';
 
   const storageKey = 'theme-preference';
-  const systemTheme: Theme = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
-  const userTheme = typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) as Theme | null : null;
+  const systemTheme: Theme =
+    typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches
+      ? 'dark'
+      : 'light';
+  const userTheme =
+    typeof localStorage !== 'undefined' ? (localStorage.getItem(storageKey) as Theme | null) : null;
 
   let theme = $state<Theme>(userTheme || systemTheme);
 

@@ -7,7 +7,7 @@
     updateAt: number;
   }
 
-  let { age, updateAt }: Props = $props();
+  let {age, updateAt }: Props = $props();
 
   const YEAR_MILLISECONDS = 1000 * 3600 * 24 * 365;
   const DAY_MILLISECONDS = 1000 * 3600 * 24;
@@ -21,6 +21,7 @@
 
   let years = $state<number>(0);
   let days = $state<number>(0);
+  let hours = $state<number>(0);
   let minutes = $state<number>(0);
   let seconds = $state<number>(0);
 
@@ -34,8 +35,11 @@
     days = Math.floor(remainingAfterYears / DAY_MILLISECONDS);
     const remainingAfterDays = remainingAfterYears % DAY_MILLISECONDS;
 
-    minutes = Math.floor(remainingAfterDays / MINUTE_MILLISECONDS);
-    const remainingAfterMinutes = remainingAfterDays % MINUTE_MILLISECONDS;
+    hours = Math.floor(remainingAfterDays / HOUR_MILLISECONDS);
+    const remainingAfterHours = remainingAfterDays % HOUR_MILLISECONDS;
+
+    minutes = Math.floor(remainingAfterHours / MINUTE_MILLISECONDS);
+    const remainingAfterMinutes = remainingAfterHours % MINUTE_MILLISECONDS;
 
     seconds = Math.floor(remainingAfterMinutes / SECOND_MILLISECONDS);
 
@@ -62,6 +66,13 @@
         <AnimatedDigit value={String(days).padStart(3, '0')[2]} />
       </div>
       <span class="label">days</span>
+    </div>
+    <div class="time-unit">
+      <div class="digits">
+        <AnimatedDigit value={String(hours).padStart(2, '0')[0]} />
+        <AnimatedDigit value={String(hours).padStart(2, '0')[1]} />
+      </div>
+      <span class="label">hours</span>
     </div>
     <div class="time-unit">
       <div class="digits">

@@ -21,7 +21,12 @@
   {#if Number.isNaN(age)}
     <AgeInput onenter={handleEnter} />
   {:else}
-    <Timer {age} updateAt={typeof localStorage !== 'undefined' ? (parseInt(localStorage.getItem('updateAt') || '20') || Date.now()) : Date.now()} />
+    <Timer
+      {age}
+      updateAt={typeof localStorage !== 'undefined'
+        ? parseInt(localStorage.getItem('updateAt') || '20') || Date.now()
+        : Date.now()}
+    />
   {/if}
 </main>
 
