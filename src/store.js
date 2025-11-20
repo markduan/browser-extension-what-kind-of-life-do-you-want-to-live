@@ -1,4 +1,5 @@
 export function getStoredAge() {
+  if (typeof localStorage === 'undefined') return NaN;
   return parseInt(localStorage.getItem('age'));
 }
 

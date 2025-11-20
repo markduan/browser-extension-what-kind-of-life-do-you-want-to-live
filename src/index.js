@@ -1,5 +1,6 @@
+import { mount } from 'svelte';
 import App from './app.svelte';
 
 const root = document.getElementById('root');
 
-new App({ target: root });
+mount(App, { target: root });

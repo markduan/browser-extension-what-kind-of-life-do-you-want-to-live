@@ -1,22 +1,31 @@
 <script>
   const storageKey = 'theme-preference';
-  const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
-  const userTheme = localStorage.getItem(storageKey);
+  const systemTheme = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
+  const userTheme = typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) : null;
 
-  let theme = userTheme || systemTheme;
-  if (theme === 'dark') {
-    document.body.classList.add(theme);
-  }
+  let theme = $state(userTheme || systemTheme);
+
+  // Apply initial theme
+  $effect(() => {
+    if (typeof document !== 'undefined') {
+      if (theme === 'dark') {
+        document.body.classList.add('dark');
+      } else {
+        document.body.classList.remove('dark');
+      }
+    }
+  });
 
   function toggleTheme() {
     theme = theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem(storageKey, theme);
-    document.body.classList.toggle('dark');
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem(storageKey, theme);
+    }
   }
 </script>
 
 <button
-  on:click={toggleTheme}
+  onclick={toggleTheme}
   class="theme-toggle style-toggle"
   title="Toggles light & dark"
   aria-label={theme}

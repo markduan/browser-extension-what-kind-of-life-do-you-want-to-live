@@ -4,12 +4,14 @@
   import Timer from './timer.svelte';
   import { getStoredAge } from './store';
 
-  let age = getStoredAge();
+  let age = $state(getStoredAge());
 
-  function handleEnter(event) {
-    age = event.detail;
-    localStorage.setItem('age', age);
-    localStorage.setItem('updateAt', Date.now());
+  function handleEnter(value) {
+    age = value;
+    if (typeof localStorage !== 'undefined') {
+      window.localStorage.setItem('age', age);
+      window.localStorage.setItem('updateAt', Date.now());
+    }
   }
 </script>
 
@@ -17,19 +19,21 @@
 <main>
   <h1>What Kind of Life do You Want to Live?</h1>
   {#if Number.isNaN(age)}
-    <AgeInput on:enter={handleEnter} />
+    <AgeInput onenter={handleEnter} />
   {:else}
-    <Timer {age} updateAt={parseInt(localStorage.getItem('updatedAt')) || Date.now()} />
+    <Timer {age} updateAt={typeof localStorage !== 'undefined' ? (parseInt(localStorage.getItem('updateAt')) || Date.now()) : Date.now()} />
   {/if}
 </main>
 
 <style>
   main {
-    margin-top: 20vh;
+    margin-top: 10vh;
     text-align: center;
   }
 
   h1 {
-    font-size: 48px;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 40px;
   }
 </style>
