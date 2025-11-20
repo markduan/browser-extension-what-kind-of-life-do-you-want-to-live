@@ -1,9 +1,11 @@
-<script>
-  const storageKey = 'theme-preference';
-  const systemTheme = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
-  const userTheme = typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) : null;
+<script lang="ts">
+  type Theme = 'light' | 'dark';
 
-  let theme = $state(userTheme || systemTheme);
+  const storageKey = 'theme-preference';
+  const systemTheme: Theme = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
+  const userTheme = typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) as Theme | null : null;
+
+  let theme = $state<Theme>(userTheme || systemTheme);
 
   // Apply initial theme
   $effect(() => {
@@ -16,7 +18,7 @@
     }
   });
 
-  function toggleTheme() {
+  function toggleTheme(): void {
     theme = theme === 'dark' ? 'light' : 'dark';
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(storageKey, theme);

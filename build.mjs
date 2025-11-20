@@ -2,7 +2,7 @@ import * as url from 'url';
 import path from 'path';
 import esbuild from 'esbuild';
 import sveltePlugin from 'esbuild-svelte';
-import { readFileSync, writeFileSync } from 'fs';
+import sveltePreprocess from 'svelte-preprocess';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
@@ -16,12 +16,17 @@ const liveReloadScript = `
 
 const configs = {
   sourcemap: isDev ? 'inline' : false,
-  entryPoints: [path.join(__dirname, 'src/index.js')],
+  entryPoints: [path.join(__dirname, 'src/index.ts')],
   mainFields: ['svelte', 'browser', 'module', 'main'],
   conditions: ['svelte', 'browser'],
   bundle: true,
   minify: isProduction,
-  plugins: [sveltePlugin({ compilerOptions: { css: 'injected' }})],
+  plugins: [
+    sveltePlugin({
+      compilerOptions: { css: 'injected' },
+      preprocess: sveltePreprocess(),
+    })
+  ],
   outfile: path.join(__dirname, 'dist/index.js'),
   banner: isDev ? { js: liveReloadScript } : {},
 };

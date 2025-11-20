@@ -1,10 +1,14 @@
-<script>
+<script lang="ts">
   import { getStoredAge } from './store';
 
-  let { onenter } = $props();
-  let age = $state(getStoredAge());
+  interface Props {
+    onenter?: (age: number) => void;
+  }
 
-  function handleEnter(e) {
+  let { onenter }: Props = $props();
+  let age = $state<number>(getStoredAge());
+
+  function handleEnter(e: KeyboardEvent): void {
     if (e.key !== 'Enter') {
       return;
     }

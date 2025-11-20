@@ -1,8 +1,12 @@
-<script>
-  let { value } = $props();
+<script lang="ts">
+  interface Props {
+    value: string;
+  }
 
-  let oldValue = $state(value);
-  let isAnimating = $state(false);
+  let { value }: Props = $props();
+
+  let oldValue = $state<string>(value);
+  let isAnimating = $state<boolean>(false);
 
   $effect(() => {
     if (value !== oldValue && !isAnimating) {

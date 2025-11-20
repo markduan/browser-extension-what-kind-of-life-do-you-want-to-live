@@ -1,16 +1,16 @@
-<script>
+<script lang="ts">
   import ThemeToggle from './theme-toggle.svelte';
   import AgeInput from './age-input.svelte';
   import Timer from './timer.svelte';
   import { getStoredAge } from './store';
 
-  let age = $state(getStoredAge());
+  let age = $state<number>(getStoredAge());
 
-  function handleEnter(value) {
+  function handleEnter(value: number): void {
     age = value;
     if (typeof localStorage !== 'undefined') {
-      window.localStorage.setItem('age', age);
-      window.localStorage.setItem('updateAt', Date.now());
+      window.localStorage.setItem('age', String(age));
+      window.localStorage.setItem('updateAt', String(Date.now()));
     }
   }
 </script>
@@ -21,7 +21,7 @@
   {#if Number.isNaN(age)}
     <AgeInput onenter={handleEnter} />
   {:else}
-    <Timer {age} updateAt={typeof localStorage !== 'undefined' ? (parseInt(localStorage.getItem('updateAt')) || Date.now()) : Date.now()} />
+    <Timer {age} updateAt={typeof localStorage !== 'undefined' ? (parseInt(localStorage.getItem('updateAt') || '20') || Date.now()) : Date.now()} />
   {/if}
 </main>
 

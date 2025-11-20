@@ -1,8 +1,13 @@
-<script>
+<script lang="ts">
   import { ACTUARIAL_LIFE_TABLE } from './store';
   import AnimatedDigit from './animated-digit.svelte';
 
-  let { age, updateAt } = $props();
+  interface Props {
+    age: number;
+    updateAt: number;
+  }
+
+  let { age, updateAt }: Props = $props();
 
   const YEAR_MILLISECONDS = 1000 * 3600 * 24 * 365;
   const DAY_MILLISECONDS = 1000 * 3600 * 24;
@@ -14,12 +19,12 @@
   const lifeExpectancy = ACTUARIAL_LIFE_TABLE[Math.floor(currentAge)] * YEAR_MILLISECONDS;
   const started = Date.now();
 
-  let years = $state(0);
-  let days = $state(0);
-  let minutes = $state(0);
-  let seconds = $state(0);
+  let years = $state<number>(0);
+  let days = $state<number>(0);
+  let minutes = $state<number>(0);
+  let seconds = $state<number>(0);
 
-  function updateTimer() {
+  function updateTimer(): void {
     const elapsed = Date.now() - started;
     const remaining = lifeExpectancy - elapsed;
 

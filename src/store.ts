@@ -1,10 +1,11 @@
-export function getStoredAge() {
+export function getStoredAge(): number {
   if (typeof localStorage === 'undefined') return NaN;
-  return parseInt(localStorage.getItem('age'));
+  const ageStr = localStorage.getItem('age');
+  return ageStr ? parseInt(ageStr, 10) : NaN;
 }
 
 // https://www.ssa.gov/oact/STATS/table4c6.html
-export const ACTUARIAL_LIFE_TABLE = [
+export const ACTUARIAL_LIFE_TABLE: readonly number[] = [
   74.12, 73.55, 72.58, 71.6, 70.62, 69.63, 68.64, 67.65, 66.65, 65.66, 64.67, 63.68, 62.69, 61.7, 60.71,
   59.73, 58.76, 57.79, 56.84, 55.9, 54.97, 54.04, 53.12, 52.21, 51.3, 50.39, 49.48, 48.57, 47.66, 46.76,
   45.86, 44.97, 44.07, 43.18, 42.29, 41.39, 40.5, 39.62, 38.73, 37.85, 36.97, 36.09, 35.21, 34.34, 33.46,
