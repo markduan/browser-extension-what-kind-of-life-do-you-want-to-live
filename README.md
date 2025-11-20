@@ -13,9 +13,20 @@ Ask yourself: What kind of life do you want to live?
 ## Development
 
 ```bash
-# start a web server
-yarn dlx http-serve .
+# Start development server with hot reload
+yarn dev
 
-# start the build process
-WATCH=1 node build.mjs
+# The dev server will run at http://localhost:3000
+# Changes to source files will automatically reload the browser
+```
+
+## Build for Production
+
+```bash
+# Build and package the extension
+yarn build
+
+# This will create:
+# - build/ directory with compiled files
+# - extension.zip ready to upload to Chrome Web Store
 ```

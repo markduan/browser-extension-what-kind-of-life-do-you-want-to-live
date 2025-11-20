@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "release": "zip -r release.zip index.html manifest.json dist"
+    "dev": "node build.mjs --dev",
+    "build": "node build.mjs --production && node package.mjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "archiver": "^7.0.1",
     "chrome-types": "^0.1.273",
     "esbuild": "^0.23.1",
     "esbuild-svelte": "^0.8.0",

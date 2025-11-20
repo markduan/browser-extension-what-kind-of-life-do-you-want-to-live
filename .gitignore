@@ -11,4 +11,8 @@
 #.pnp.*
 dist
 node_modules
+
+# Build artifacts
+build/
+extension.zip
 release.zip
