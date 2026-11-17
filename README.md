@@ -1,6 +1,6 @@
 # What kind of life do you want to live
 
-This extension will show a countdown of your life expectancy base on [Actuarial Life Table](https://www.ssa.gov/oact/STATS/table4c6.html)。
+A svelte extension will show a countdown of your life expectancy base on [Actuarial Life Table](https://www.ssa.gov/oact/STATS/table4c6.html)。
 
 ![Screen shot](./screenshot.png)
 
